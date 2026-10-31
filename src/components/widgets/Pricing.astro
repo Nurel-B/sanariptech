@@ -10,7 +10,7 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
   prices = [],
-  currency = '$',
+  currency = 'Сом',
   billingLabels = { monthly: 'Monthly', yearly: 'Yearly' },
 
   id,
@@ -107,8 +107,9 @@ const periodFor = (period: Price['period'], billing: 'monthly' | 'yearly') =>
                             (billing) => (
                               <div class:list={['aw-price', `aw-price-${billing}`]} data-billing={billing}>
                                 <div class="flex items-center justify-center text-center mb-1">
-                                  <span class="text-5xl">{currency}</span>
                                   <span class="text-6xl font-extrabold">{isDual(price) ? price[billing] : price}</span>
+                                  &nbsp
+                                  <span class="text-5xl font-extrabold">{currency}</span>
                                 </div>
                                 <span class="text-base leading-6 lowercase text-gray-600 dark:text-slate-400">
                                   {periodFor(period, billing)}
